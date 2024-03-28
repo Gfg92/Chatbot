@@ -1,0 +1,7 @@
+flet
+langchain
+SpeechRecognition
+numpy
+soundfile
+torch
+git+https://github.com/openai/whisper.git
