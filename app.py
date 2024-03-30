@@ -20,14 +20,11 @@ def main(page: Page):
         page.update()
 
     def send_message(e):
-
         if txt_input.value.strip():
             user_input = txt_input.value.strip()
         elif btn_mic.on_click:
             user_input = speech_recognition(e)
-
         if user_input:
-
             chat_view.controls.append(
                 Container(
                     content= Column(
@@ -53,6 +50,8 @@ def main(page: Page):
                 
             )
             txt_input.value = ""
+            btn_mic.visible = True 
+            btn_send.visible = False  
             page.update()
             
             pre_response = Text(value="")
@@ -91,11 +90,11 @@ def main(page: Page):
 
     chat_view = ListView(expand= True, auto_scroll= True)
     btn_mic = IconButton(icon= icons.MIC, on_click=send_message)
-    txt_input = TextField(hint_text="Type your message here", expand= True, autofocus= True, on_submit= send_message)
-    btn_send = IconButton(icon= icons.SEND, on_click= send_message)
+    txt_input = TextField(hint_text="Type your message here", expand= True, on_change=on_input_change, on_submit= send_message)
+    btn_send = IconButton(icon= icons.SEND, on_click= send_message, visible= False)
     input_row = Container(
             content= Row(
-            [txt_input, btn_mic, btn_send], 
+            [txt_input, Stack([btn_mic, btn_send])], 
             alignment= alignment.bottom_center
             )
         )
