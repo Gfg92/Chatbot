@@ -64,7 +64,7 @@ def main(page: Page):
                                     spacing=5,
                                     controls=[
                                     CircleAvatar(
-                                        content=Text(value="B"),
+                                        content=Icon(icons.ANDROID),
                                         scale=0.8,
                                         bgcolor= colors.GREEN
                                     ),
